@@ -20,7 +20,7 @@ def inicio(gramatica):
             renamed_terminals[nt] = f'A{next_number}'
             next_number += 1
 
-    updated_grammar = {}
+    updated_gr = {}
 
     # Atualiza as produções com os novos nomes
     for nt, productions in gramatica.items():
@@ -33,10 +33,10 @@ def inicio(gramatica):
 
             updated_productions.append(updated_production)
 
-        updated_grammar[renamed_terminals.get(nt, nt)] = updated_productions
+        updated_gr[renamed_terminals.get(nt, nt)] = updated_productions
 
-    return updated_grammar
-def print_grammar(gramatica):
+    return updated_gr
+def print_gr(gramatica):
     for nt, productions in gramatica.items():
         print(f"{nt} -> {' | '.join(productions)}")
 
@@ -45,5 +45,5 @@ def remove(gramatica):
         gramatica[nt] = [production for production in productions if production != 'λ']
 
 remove(gramatica)
-updated_grammar = inicio(gramatica)
-print_grammar(updated_grammar)
+updated_gr = inicio(gramatica)
+print_gr(updated_gr)
